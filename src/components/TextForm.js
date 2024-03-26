@@ -6,15 +6,18 @@ function TextForm(props) {
   const upperCase = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("converted to uppercase", "success");
   }
 
   const lowerCase = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("converted to lowercase", "success");
   }
 
   const clearText = () => {
     setText("");
+    props.showAlert("text cleared", "success");
   }
 
   const handleOnChange = (event) => {
@@ -37,7 +40,7 @@ function TextForm(props) {
       <p>your text contains {text.length} characters, {text.split(" ").length} words</p>
       <p>Minutes read is {0.008 * text.split(" ").length }</p>
       <h2>Preview</h2>
-      <p>{text}</p>
+      <p>{text.length > 0 ? text : "enter text above to preview"}</p>
     </div>
     </>
   )
